@@ -26,10 +26,13 @@ export class LoginComponent implements OnInit {
     var firebase = require("firebase/app");
     if (firebase.auth().currentUser){
       this.auth.signOut()
-      document.getElementById("loginout").innerHTML = "Login With Google"
+      document.getElementById("loginout").innerHTML = "Suscribase con Gmail"
     } else{
       this.auth.googleLogin()
-      document.getElementById("loginout").innerHTML = "Logout"
+      if (firebase.auth().currentUser){
+        document.getElementById("loginout").innerHTML = "Suscribase con Gmail"
+      }
+
     }
       // We want to log in with google
       // get information from firebase on whether or not user has registered plants
@@ -37,20 +40,14 @@ export class LoginComponent implements OnInit {
     //}
   }
 
-  // logout() {
-  //   this.auth.signOut()
-  //   document.getElementById("loginout").innerHTML = "Login With Google"
-  //
-  // }
-
 
   ngOnInit() {
-    var firebase = require("firebase/app")
-    if (firebase.auth().currentUser){
-      document.getElementById("loginout").innerHTML = "Logout"
-    }else{
-      document.getElementById("loginout").innerHTML = "Logout"
-    }
+    // var firebase = require("firebase/app")
+    // if (firebase.auth().currentUser){
+    //   document.getElementById("loginout").innerHTML = "Logout";//"Login with Google"
+    // }else{
+    //   document.getElementById("loginout").innerHTML = "Suscribase con Gmail";//"Logout"
+    // }
   }
 
 }

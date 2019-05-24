@@ -30,7 +30,9 @@ import { GraphComponent } from '../graph/graph.component';
 import { routes } from '../app.router';
 import { AboutComponent } from '../about/about.component';
 import { InstallationComponent } from '../installation/installation.component';
-import { PlantSelectorComponent } from './plant-selector/plant-selector.component';  //////////////////
+import { PlantSelectorComponent } from './plant-selector/plant-selector.component';
+import { TableComponent } from './../table/table.component';
+import { SubscribedComponent } from './../subscribed/subscribed.component';  //////////////////
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -59,6 +61,8 @@ export const firebaseConfig = environment.firebaseConfig;
     AboutComponent,
     InstallationComponent,
     PlantSelectorComponent,
+    TableComponent,
+    SubscribedComponent,
   ],
   bootstrap: [AppComponent]
 })

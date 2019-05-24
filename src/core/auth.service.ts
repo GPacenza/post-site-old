@@ -31,14 +31,14 @@ export class AuthService {
   }
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider()
-    // this.router.navigate(['plant-selector']);  <--ge this to happen after google authenticates user
+    // this.router.navigate(['plant-selector']);  //<--ge this to happen after google authenticates user
     return this.oAuthLogin(provider);
   }
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user, [])  //Need to remember this could erase plant data for user
-      })
+      }).then(()=>{this.router.navigate(['plant-selector'])});
   }
   public updateUserData(user, userPlants) {
     // Sets user data to firestore on login
@@ -55,7 +55,7 @@ export class AuthService {
   }
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-        this.router.navigate(['login']);//(['/']);
+        this.router.navigate(['my-subscribed']);//(['/']);
     });
   }
 }

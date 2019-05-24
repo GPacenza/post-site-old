@@ -1,30 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-// import { ChartService} from '../chart.service'
-import * as _ from 'lodash'
-// import * as Plotly from 'plotly.js'
-
+import { Injectable, Input } from '@angular/core';
 import * as Plotly from 'plotly.js/dist/plotly.js';
 import {Config, Data, Layout} from 'plotly.js/dist/plotly.js';
+import * as _ from 'lodash';
 
-@Component({
-  selector: 'plant-graph',
-  templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.scss']
-})
-
-export class GraphComponent implements OnInit {
-
-  @ViewChild('chart') el: ElementRef;
+@Injectable()
+export class DataService {
 
   constructor() { }
 
-  ngOnInit() {
-    this.basicChart()
-  }
-
-
-  basicChart() {
-     const element = this.el.nativeElement
+  changeChart() {
+     const element =0;// this.el;
   Plotly.d3.json("https://www.googleapis.com/fusiontables/v2/query?sql=SELECT%20*%20FROM%201lgxjPxZ8_V6OyA0Wa19iGpuZKKn1mBf1chJOgkqU%20WHERE%20plant%3D%27" + localStorage.getItem("plantName") + "%27%20AND%20rawWaterTurbidity%20>%200%20ORDER%20BY%20timeFinished%20DESC%20LIMIT%20100&key=AIzaSyB4fY4TPsWMhqifu68GFq1aWREjiiAYZmo", function(err, data){
   function unpack_data(data, key) {
    const rows = data["rows"]
@@ -107,4 +92,5 @@ export class GraphComponent implements OnInit {
   Plotly.newPlot(element, data1, layout1);
   })
 }
+
 }

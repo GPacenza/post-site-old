@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef  } from '@angular/core';
 import { AuthService } from '../../core/auth.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'my-plant-selector',
@@ -8,11 +9,13 @@ import { AuthService } from '../../core/auth.service'
 })
 export class PlantSelectorComponent implements OnInit {
 
-  constructor(public auth:AuthService) { }
+  @ViewChild('mail') email:ElementRef;
+
+  constructor(public auth:AuthService, private router: Router) { }
 
   sendPlantData(){
     var firebase = require("firebase/app"); // <-- use this to see emailVerified == true
-    var user = firebase.auth().currentUser
+    var user = firebase.auth().currentUser;
     var form = document.getElementsByTagName("FORM")[0];
     var plantBoxes = form.getElementsByTagName("INPUT")
     var plants = []
@@ -24,10 +27,11 @@ export class PlantSelectorComponent implements OnInit {
       }
     }
 
-    console.log(user)
-    console.log("plants", user.plants)
+
     this.auth.updateUserData(user, plants)
-    console.log(plants)
+    alert('Se han actualizado sus preferencias!')
+    this.auth.signOut();
+    this.router.navigate(['my-subscribed']);
   }
 
   ngOnInit() {

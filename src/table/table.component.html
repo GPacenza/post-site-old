@@ -1,0 +1,18 @@
+<div ng-app="myApp" ng-controller="customersCtrl">
+
+<table class='center' style='text-align:center' >
+  <td>TimeStamp</td>
+  <td>Raw Water Turbidity (NTU)</td>
+  <td>Settled Water Turbidity (NTU)</td>
+  <td>Filtered Water Turbidity (NTU)</td>
+  <td>Coagulant Dose (mg/L)</td>
+  <tr *ngFor="let d of rows">
+    <td>{{ d.timeStamp }}</td>
+    <td>{{ d.rawWaterTurbidity}}</td>
+    <td>{{ d.settledWaterTurbidity }}</td>
+    <td>{{ d.filteredWaterTurbidity }}</td>
+    <td>{{ d.coagulantDose }}</td>
+  </tr>
+</table>
+
+</div>
