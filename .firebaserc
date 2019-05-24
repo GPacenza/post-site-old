@@ -2,6 +2,7 @@
   "projects": {
     "dev": "post-visualize-development",
     "prod": "post-visualize",
-    "default": "post-visualize-development"
+    "default": "post-visualize-development",
+    "post-site": "post-aguaclara"
   }
 }

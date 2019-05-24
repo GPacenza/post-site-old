@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ClarityIcons } from 'clarity-icons';
-import 'clarity-icons/shapes/all-shapes';
+//import { ClarityIcons } from 'clarity-icons';
+//import 'clarity-icons/shapes/all-shapes';
 
 @Component({
   selector: 'navigation',
@@ -13,8 +13,8 @@ export class NavComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-  	ClarityIcons.add({"post-icon": `
-	`});
+  //	ClarityIcons.add({"post-icon": `
+	//`});
   }
 
 }
